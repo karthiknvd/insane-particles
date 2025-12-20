@@ -7,7 +7,7 @@ The goal of this project is simple:
 
 All particle effects are rendered live inside a controlled preview box and exposed as clean, copy-ready HTML, CSS, and JavaScript code — with zero frameworks and zero lock-in.
 
-Website: insane-particles.vercel.app
+🌐 **Website:** [insane-particles.vercel.app](https://insane-particles.vercel.app)
 
 ---
 
