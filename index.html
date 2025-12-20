@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insane Particles - Futuristic Particle Effects for Modern Websites</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Insane Particles is a futuristic playground of interactive particle effects for web developers. Preview stunning particles live and copy clean HTML, CSS, and JavaScript code instantly.">
+    <meta name="keywords" content="particles, particle effects, web particles, javascript particles, canvas particles, frontend effects, web animations, developer tools">
+    <meta name="author" content="Webnate">
+
+    <!-- Open Graph (Facebook, LinkedIn, Discord, etc.) -->
+    <meta property="og:title" content="Insane Particles - Futuristic Particle Effects">
+    <meta property="og:description" content="Explore a futuristic collection of interactive particle effects. Preview live, copy code instantly, and use them in your modern web projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://insane-particles.vercel.app">
+    <meta property="og:image" content="https://insane-particles.vercel.app/og.png">
+    <meta property="og:site_name" content="Insane Particles">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Insane Particles - Futuristic Particle Effects">
+    <meta name="twitter:description" content="A futuristic playground of interactive particle effects for modern web developers. Preview, copy, and build faster.">
+    <meta name="twitter:image" content="https://insane-particles.vercel.app/og.png">
+
+    <!-- Theme / UI -->
+    <meta name="theme-color" content="#0b0f1a">
+    <meta name="color-scheme" content="dark">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- HERO SECTION -->
+        <header class="hero">
+            <h1 class="title">insane-particles</h1>
+            <p class="subtitle">Futuristic particle effects for modern websites</p>
+        </header>
+
+        <!-- PARTICLE PLAYGROUND -->
+        <section class="playground">
+            <div class="buttons-container">
+    <button class="effect-btn active" data-effect="floating">Floating Orbs</button>
+    <button class="effect-btn" data-effect="connecting">Connecting Dots</button>
+    <button class="effect-btn" data-effect="mouseTrail">Mouse Trail</button>
+    <button class="effect-btn" data-effect="matrix">Matrix Rain</button>
+    <button class="effect-btn" data-effect="fireflies">Fireflies</button>
+    <button class="effect-btn" data-effect="networkRepulse">Network Repulse</button>
+    <button class="effect-btn" data-effect="waveField">Wave Field</button>
+    <button class="effect-btn" data-effect="explosionBurst">Explosion Burst</button>
+    <button class="effect-btn" data-effect="gravityOrbs">Gravity Orbs</button>
+    <button class="effect-btn" data-effect="sparkleStars">Sparkle Stars</button>
+</div>
+
+            <div class="preview-container">
+                <canvas id="particle-canvas"></canvas>
+                <div class="preview-glow"></div>
+            </div>
+        </section>
+
+        <!-- CODE PANEL -->
+        <section class="code-panel">
+            <div class="code-tabs">
+                <button class="tab-btn active" data-tab="html">HTML</button>
+                <button class="tab-btn" data-tab="css">CSS</button>
+                <button class="tab-btn" data-tab="js">JavaScript</button>
+                <button class="copy-btn">Copy All</button>
+            </div>
+            <div class="code-content">
+                <pre><code id="code-display"></code></pre>
+            </div>
+        </section>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
