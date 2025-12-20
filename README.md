@@ -249,7 +249,6 @@ Small star-like particles that twinkle and shimmer.
 
 ## 📂 Project Structure
 
-```text
 insane-particles/
 ├── index.html
 ├── style.css
