@@ -248,11 +248,14 @@ Small star-like particles that twinkle and shimmer.
 ---
 
 ## 📂 Project Structure
+
+```text
 insane-particles/
 ├── index.html
 ├── style.css
 ├── index.js
 └── README.md
+
 
 
 Everything lives in **three files** by design — making it easy to study, modify, and reuse.
