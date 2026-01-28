@@ -2,9 +2,7 @@
 /**
  * insane-particles - A premium particle playground for developers
  * Pure vanilla HTML/CSS/JS - No frameworks
- * Fixed: Floating Orbs now animates reliably on first page load and every direct switch
- * - Animation loop is centrally managed and explicitly started after every init()
- * - All other features (subtle glow, Matrix Rain, Fireflies cyan, copy code) preserved unchanged
+ * Fixed: Interactive effects now work correctly when copied (canvas-relative mouse coordinates)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -501,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ParticleManager.gravityOrbs = gravityOrbs;
     ParticleManager.sparkleStars = sparkleStars;
 
-    // Fully synchronized copy-ready code snippets (unchanged from your provided version)
+    // FIXED: Copy-ready code snippets with correct canvas-relative mouse coordinates
     const particleCodes = {
         floating: {
             html: `<canvas id="particles"></canvas>`,
@@ -554,7 +552,7 @@ window.addEventListener('resize', () => {
         },
         connecting: {
             html: `<canvas id="particles"></canvas>`,
-            css: `canvas { position: fixed; inset: 0; pointer-events: none; }`,
+            css: `canvas { position: fixed; inset: 0; pointer-events: auto; }`,
             js: `// Interactive Connecting Dots
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
@@ -575,8 +573,9 @@ for (let i = 0; i < 100; i++) {
 }
 
 canvas.addEventListener('mousemove', e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
 });
 
 function animate() {
@@ -637,7 +636,7 @@ window.addEventListener('resize', () => {
         },
         mouseTrail: {
             html: `<canvas id="particles"></canvas>`,
-            css: `canvas { position: fixed; inset: 0; pointer-events: none; }`,
+            css: `canvas { position: fixed; inset: 0; pointer-events: auto; }`,
             js: `// Mouse Trail Effect
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
@@ -647,10 +646,12 @@ canvas.height = window.innerHeight;
 let particles = [];
 
 canvas.addEventListener('mousemove', e => {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
   for (let i = 0; i < 6; i++) {
     particles.push({
-      x: e.clientX,
-      y: e.clientY,
+      x, y,
       vx: (Math.random() - 0.5) * 4,
       vy: (Math.random() - 0.5) * 4,
       life: 1,
@@ -790,7 +791,7 @@ window.addEventListener('resize', () => {
         },
         networkRepulse: {
             html: `<canvas id="particles"></canvas>`,
-            css: `canvas { position: fixed; inset: 0; pointer-events: none; }`,
+            css: `canvas { position: fixed; inset: 0; pointer-events: auto; }`,
             js: `// Network Repulse
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
@@ -811,8 +812,9 @@ for (let i = 0; i < 120; i++) {
 }
 
 canvas.addEventListener('mousemove', e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
 });
 
 function animate() {
@@ -908,7 +910,7 @@ window.addEventListener('resize', () => {
         },
         explosionBurst: {
             html: `<canvas id="particles"></canvas>`,
-            css: `canvas { position: fixed; inset: 0; pointer-events: none; }`,
+            css: `canvas { position: fixed; inset: 0; pointer-events: auto; }`,
             js: `// Explosion Burst (Click to explode)
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
@@ -918,8 +920,9 @@ canvas.height = window.innerHeight;
 let particles = [];
 
 canvas.addEventListener('click', e => {
-  const x = e.clientX;
-  const y = e.clientY;
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
   for (let i = 0; i < 80; i++) {
     const angle = Math.random() * Math.PI * 2;
     const speed = Math.random() * 8 + 4;
@@ -1083,22 +1086,50 @@ window.addEventListener('resize', () => {
     });
 
     copyButton.addEventListener('click', async () => {
-        if (!currentEffect) return;
-        const codes = particleCodes[currentEffect];
-        const fullCode = `${codes.html}\n\n<style>\n${codes.css}\n</style>\n\n<script>\n${codes.js}\n</script>`;
-        
-        try {
-            await navigator.clipboard.writeText(fullCode);
-            copyButton.textContent = 'Copied!';
-            copyButton.classList.add('copied');
-            setTimeout(() => {
-                copyButton.textContent = 'Copy All';
-                copyButton.classList.remove('copied');
-            }, 2000);
-        } catch (err) {
-            copyButton.textContent = 'Failed';
-        }
-    });
+    if (!currentEffect) return;
+    const codes = particleCodes[currentEffect];
+
+    const fullHTML = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>${currentEffect} - Particle Effect</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #0a0a0a;
+        overflow: hidden;
+        height: 100%;
+    }
+    ${codes.css}
+</style>
+</head>
+<body>
+
+${codes.html}
+
+<script>
+${codes.js}
+</script>
+
+</body>
+</html>
+`;
+
+    try {
+        await navigator.clipboard.writeText(fullHTML.trim());
+        copyButton.textContent = 'Copied!';
+        copyButton.classList.add('copied');
+        setTimeout(() => {
+            copyButton.textContent = 'Copy All';
+            copyButton.classList.remove('copied');
+        }, 2000);
+    } catch (err) {
+        copyButton.textContent = 'Failed';
+    }
+});
 
     // Initial load
     ParticleManager.init('floating');
