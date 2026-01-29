@@ -1,263 +1,86 @@
 # Insane Particles ⚡
 
-**Insane Particles** is a futuristic, developer-focused playground showcasing interactive particle effects that can be instantly previewed and copied into modern websites.
+**Insane Particles** is a clean, developer-focused playground showcasing 10 plug-and-play particle effects built with pure HTML, CSS, and JavaScript.
 
-The goal of this project is simple:
-**preview → copy → paste → build faster.**
+The idea is simple:
+**preview → copy → download → use instantly.**
 
-All particle effects are rendered live inside a controlled preview box and exposed as clean, copy-ready HTML, CSS, and JavaScript code — with zero frameworks and zero lock-in.
+Each effect runs inside a live preview container, and the exact HTML, CSS, and JS required is displayed as clean, copy-ready code. No frameworks, no libraries, no setup.
 
-🌐 **Website:** [insane-particles.vercel.app](https://insane-particles.vercel.app)
+🌐 **Website:** [https://insane-particles.vercel.app](https://insane-particles.vercel.app)
 
 ---
 
 ## ✨ Features
 
-- 🚀 Futuristic, premium UI with smooth animations
-- 🧠 Developer-first experience (no clutter, no noise)
-- 🎛 One-click particle switching
-- 🧹 Clean destroy/init lifecycle for every effect
-- 📦 Copy-ready HTML, CSS, and JavaScript
-- ⚡ Pure Vanilla JavaScript (no frameworks)
-- 🌙 Dark-mode native design
-- 🔒 Particles are isolated and safe to embed
+* 🚀 Futuristic UI with smooth transitions
+* 🎛 Instant effect switching
+* 📥 One-click “Download Code” (auto-generated full HTML file)
+* 🔗 One-click “Copy Code” panel
+* 🧹 Clean lifecycle: init, update, destroy
+* ⚡ Pure Vanilla JavaScript
+* 🌙 Dark, minimalist theme
+* 🔒 Safe, isolated particle environments
 
 ---
 
 ## 🧱 Tech Stack
 
-- **HTML5**
-- **CSS3**
-- **Vanilla JavaScript**
-- **Canvas API**
+* HTML5
+* CSS3
+* Vanilla JavaScript
+* Canvas API
 
-No frameworks.  
-No libraries.  
+No frameworks.
+No libraries.
 No build tools.
 
 ---
 
 ## 🧠 How It Works
 
-1. A single **preview container** hosts all particle effects.
-2. Each particle is implemented as an **isolated module**.
-3. Clicking a button:
-   - Destroys the active particle instance
-   - Cleans up animation frames & event listeners
-   - Injects the new particle system
-4. The **code panel updates instantly**, showing the exact HTML, CSS, and JS needed.
-5. Developers copy the code and paste it into their own projects.
+1. The preview container hosts a single particle system at a time.
+2. Each effect is implemented as an isolated module.
+3. Selecting an effect:
 
-Only **one particle effect runs at a time** — ensuring performance, clarity, and predictability.
+   * Stops the current animation
+   * Removes all event listeners
+   * Loads and initializes the new system
+4. The code panel updates to show the exact HTML, CSS, and JS needed.
+5. Users can copy the code or download a ready-to-run file.
 
----
-
-## 🎛 Available Particle Effects
-
-Below is a detailed explanation of every particle system currently included.
+Only one effect runs at a time for clarity and performance.
 
 ---
 
-### 🌐 Floating Orbs
-Soft, glowing orbs drifting smoothly across the canvas.
+## 🎛 Available Particle Effects (10)
 
-**Use cases**
-- Hero backgrounds
-- Landing pages
-- Calm, futuristic interfaces
+* Floating Orbs
+* Connecting Dots
+* Mouse Trail
+* Matrix Rain
+* Fireflies
+* Network Repulse
+* Wave Field
+* Explosion Burst
+* Gravity Orbs
+* Sparkle Stars
 
-**Behavior**
-- Slow, ambient motion
-- Subtle glow
-- Low performance cost
-
-**Inspiration**
-- Common canvas particle drift techniques
-- Ambient motion effects popularized in modern UI demos
-
----
-
-### 🔗 Connecting Dots
-Particles that dynamically connect with nearby particles using animated lines.
-
-**Use cases**
-- Tech websites
-- AI / network visuals
-- Data-driven platforms
-
-**Behavior**
-- Distance-based line connections
-- Responsive canvas scaling
-- Medium performance cost
-
-**Inspiration**
-- Network graph visualizations
-- Popularized by early HTML5 canvas experiments
-
----
-
-### 🖱 Mouse Trail
-Particles emitted from the mouse cursor, leaving a smooth animated trail.
-
-**Use cases**
-- Interactive portfolios
-- Creative landing pages
-- Experimental UI sections
-
-**Behavior**
-- Mouse-reactive emission
-- Fading trail particles
-- Lightweight and responsive
-
-**Inspiration**
-- Cursor trail effects seen in creative coding communities
-
----
-
-### 🟩 Matrix Rain
-Classic falling character rain inspired by the Matrix aesthetic.
-
-**Use cases**
-- Hacker-style themes
-- Sci-fi projects
-- Terminal-inspired designs
-
-**Behavior**
-- Vertical character streams
-- Independent column timing
-- Moderate performance cost
-
-**Inspiration**
-- Matrix digital rain effect  
-  Originally inspired by visual concepts from *The Matrix (1999)*
-
----
-
-### ✨ Fireflies
-Small glowing particles that wander organically like fireflies.
-
-**Use cases**
-- Nature-themed designs
-- Calm ambient backgrounds
-- Night-mode UIs
-
-**Behavior**
-- Organic movement
-- Glow pulses
-- Low performance impact
-
-**Inspiration**
-- Organic motion algorithms
-- Perlin-like randomness patterns
-
----
-
-### 🧠 Network Repulse
-A dynamic particle network that repels away from the cursor.
-
-**Use cases**
-- Interactive hero sections
-- High-tech websites
-- AI / system metaphors
-
-**Behavior**
-- Cursor-based force interaction
-- Network deformation
-- Medium-to-high performance cost
-
-**Inspiration**
-- Force-based particle simulations
-- Physics-driven canvas experiments
-
----
-
-### 🌊 Wave Field
-Particles arranged in a grid that animate like a flowing wave surface.
-
-**Use cases**
-- Abstract backgrounds
-- Data visualization metaphors
-- Futuristic dashboards
-
-**Behavior**
-- Sinusoidal wave motion
-- Grid-based structure
-- Predictable animation patterns
-
-**Inspiration**
-- Mathematical wave functions
-- Shader-like motion recreated in canvas
-
----
-
-### 💥 Explosion Burst
-A short-lived particle explosion that bursts outward from a point.
-
-**Use cases**
-- Click interactions
-- Transitions
-- Emphasis effects
-
-**Behavior**
-- Radial velocity burst
-- Gravity & fade-out
-- Event-triggered animation
-
-**Inspiration**
-- Game development particle bursts
-- Impact effect simulations
-
----
-
-### 🪐 Gravity Orbs
-Particles that orbit invisible gravity centers.
-
-**Use cases**
-- Sci-fi visuals
-- Space-themed designs
-- Advanced motion showcases
-
-**Behavior**
-- Orbital physics
-- Dynamic velocity adjustment
-- Medium performance cost
-
-**Inspiration**
-- Gravitational motion simulations
-- Newtonian physics concepts
-
----
-
-### ⭐ Sparkle Stars
-Small star-like particles that twinkle and shimmer.
-
-**Use cases**
-- Decorative backgrounds
-- Space themes
-- Minimal ambient motion
-
-**Behavior**
-- Opacity oscillation
-- Random twinkle timing
-- Very lightweight
-
-**Inspiration**
-- Starfield effects
-- Classic space background simulations
+Each effect includes behavior, use cases, and inspiration details.
 
 ---
 
 ## 📂 Project Structure
 
+```
 insane-particles/
 ├── index.html
 ├── style.css
 ├── index.js
 └── README.md
+```
 
-
-
-Everything lives in **three files** by design — making it easy to study, modify, and reuse.
+Everything is intentionally kept in three core files for easy study, reuse, and customization.
 
 ---
 
@@ -268,32 +91,29 @@ Everything lives in **three files** by design — making it easy to study, modif
 3. Scroll to the code panel.
 4. Copy the HTML, CSS, and JS.
 5. Paste it into your project.
-6. Done.
+6. Or download a complete ready-to-run file.
 
-No dependencies. No setup.
+No setup required.
 
 ---
 
 ## ⚠️ Performance Notes
 
-- All particles are optimized for **single-instance rendering**
-- Heavy effects are clearly visualized before use
-- Recommended:
-  - Use lightweight effects for backgrounds
-  - Use heavier effects only for hero sections
+* Only one effect runs at a time.
+* Some effects are heavier than others.
+* Recommended:
+
+  * Use lightweight effects for backgrounds
+  * Use heavier effects for hero sections or interactions
 
 ---
 
 ## 📜 Attribution & Inspiration
 
-This project curates and re-implements **common open-source particle concepts** found across the creative coding community.
+This project takes inspiration from widely known particle concepts and classic canvas experiments.
+All implementations are custom-written, but many visual ideas originate from the creative coding community.
 
-While implementations are custom and rewritten:
-- Visual ideas are inspired by classic canvas experiments
-- Some effects are influenced by long-standing open-source demos
-- Full credit goes to the broader creative coding ecosystem
-
-If you recognize an effect or believe attribution should be added, please open an issue.
+If attribution is missing for any specific effect, you may open an issue.
 
 ---
 
@@ -302,29 +122,28 @@ If you recognize an effect or believe attribution should be added, please open a
 Suggestions, improvements, and new particle ideas are welcome.
 
 Guidelines:
-- Keep everything framework-free
-- Maintain clean lifecycle management
-- Prioritize performance and clarity
+
+* Keep everything framework-free
+* Maintain clean lifecycle management
+* Prioritize readability and performance
 
 ---
 
 ## ☕ Support
 
-If this project helped you or inspired your work:
+If this project helped you:
 
-👉 **Buy me a coffee:** https://buymeacoffee.com/webnate
-
-Every bit of support helps keep projects like this open-source and evolving.
+Buy me a coffee: [https://buymeacoffee.com/webnate](https://buymeacoffee.com/webnate)
 
 ---
 
 ## 🏁 License
 
-MIT License  
+MIT License
 Free to use, modify, and embed in personal or commercial projects.
 
 ---
 
-**Built with precision.  
-Designed for developers.  
-Welcome to Insane Particles. ⚡**
+Built clean.
+Built simple.
+Built for developers. ⚡

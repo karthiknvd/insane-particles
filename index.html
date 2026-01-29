@@ -41,7 +41,21 @@
 </head>
 
 <body>
+    <!-- Animated Background Particles -->
+    <div class="bg-particles"></div>
+    
+    <!-- Animated Grid Lines -->
+    <div class="grid-overlay"></div>
+    
+    <!-- Glowing Orbs -->
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+    
     <div class="container">
+        <!-- Cursor Trail Effect -->
+        <canvas id="cursor-trail"></canvas>
+        
         <!-- HERO SECTION -->
         <header class="hero">
             <h1 class="title">insane-particles</h1>
@@ -51,17 +65,17 @@
         <!-- PARTICLE PLAYGROUND -->
         <section class="playground">
             <div class="buttons-container">
-    <button class="effect-btn active" data-effect="floating">Floating Orbs</button>
-    <button class="effect-btn" data-effect="connecting">Connecting Dots</button>
-    <button class="effect-btn" data-effect="mouseTrail">Mouse Trail</button>
-    <button class="effect-btn" data-effect="matrix">Matrix Rain</button>
-    <button class="effect-btn" data-effect="fireflies">Fireflies</button>
-    <button class="effect-btn" data-effect="networkRepulse">Network Repulse</button>
-    <button class="effect-btn" data-effect="waveField">Wave Field</button>
-    <button class="effect-btn" data-effect="explosionBurst">Explosion Burst</button>
-    <button class="effect-btn" data-effect="gravityOrbs">Gravity Orbs</button>
-    <button class="effect-btn" data-effect="sparkleStars">Sparkle Stars</button>
-</div>
+                <button class="effect-btn active" data-effect="floating">Floating Orbs</button>
+                <button class="effect-btn" data-effect="connecting">Connecting Dots</button>
+                <button class="effect-btn" data-effect="mouseTrail">Mouse Trail</button>
+                <button class="effect-btn" data-effect="matrix">Matrix Rain</button>
+                <button class="effect-btn" data-effect="fireflies">Fireflies</button>
+                <button class="effect-btn" data-effect="networkRepulse">Network Repulse</button>
+                <button class="effect-btn" data-effect="waveField">Wave Field</button>
+                <button class="effect-btn" data-effect="explosionBurst">Explosion Burst</button>
+                <button class="effect-btn" data-effect="gravityOrbs">Gravity Orbs</button>
+                <button class="effect-btn" data-effect="sparkleStars">Sparkle Stars</button>
+            </div>
 
             <div class="preview-container">
                 <canvas id="particle-canvas"></canvas>
@@ -71,11 +85,12 @@
 
         <!-- CODE PANEL -->
         <section class="code-panel">
-            <div class="code-tabs">
-                <button class="tab-btn active" data-tab="html">HTML</button>
-                <button class="tab-btn" data-tab="css">CSS</button>
-                <button class="tab-btn" data-tab="js">JavaScript</button>
-                <button class="copy-btn">Copy All</button>
+            <div class="code-header">
+                <span class="code-label">Complete HTML Code</span>
+                <div class="code-actions">
+                    <button class="copy-btn">Copy Code</button>
+                    <button class="download-btn">Download Code</button>
+                </div>
             </div>
             <div class="code-content">
                 <pre><code id="code-display"></code></pre>
@@ -84,6 +99,7 @@
     </div>
 
     <script src="index.js"></script>
+    <script src="cursor-effects.js"></script>
     <script src="webnate-footer.js"></script>
 </body>
 </html>

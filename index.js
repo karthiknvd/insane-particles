@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const codeDisplay = document.getElementById('code-display');
     const effectButtons = document.querySelectorAll('.effect-btn');
-    const tabButtons = document.querySelectorAll('.tab-btn');
     const copyButton = document.querySelector('.copy-btn');
+    const downloadButton = document.querySelector('.download-btn');
 
     let currentEffect = null;
     let animationId = null;
@@ -80,8 +80,36 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCode() {
             if (!currentEffect) return;
             const codes = particleCodes[currentEffect];
-            const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
-            codeDisplay.textContent = codes[activeTab] || '';
+            
+            // Generate full HTML code
+            const fullHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>${currentEffect} - Particle Effect</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #0a0a0a;
+        overflow: hidden;
+        height: 100%;
+    }
+    ${codes.css}
+</style>
+</head>
+<body>
+
+${codes.html}
+
+<script>
+${codes.js}
+</script>
+
+</body>
+</html>`;
+            
+            codeDisplay.textContent = fullHTML.trim();
             codeDisplay.style.opacity = '0';
             setTimeout(() => codeDisplay.style.opacity = '1', 100);
         }
@@ -1077,14 +1105,6 @@ window.addEventListener('resize', () => {
         });
     });
 
-    tabButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            tabButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            ParticleManager.updateCode();
-        });
-    });
-
     copyButton.addEventListener('click', async () => {
     if (!currentEffect) return;
     const codes = particleCodes[currentEffect];
@@ -1123,13 +1143,64 @@ ${codes.js}
         copyButton.textContent = 'Copied!';
         copyButton.classList.add('copied');
         setTimeout(() => {
-            copyButton.textContent = 'Copy All';
+            copyButton.textContent = 'Copy Code';
             copyButton.classList.remove('copied');
         }, 2000);
     } catch (err) {
         copyButton.textContent = 'Failed';
     }
 });
+
+    downloadButton.addEventListener('click', () => {
+        if (!currentEffect) return;
+        const codes = particleCodes[currentEffect];
+
+        const fullHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>${currentEffect} - Particle Effect</title>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #0a0a0a;
+        overflow: hidden;
+        height: 100%;
+    }
+    ${codes.css}
+</style>
+</head>
+<body>
+
+${codes.html}
+
+<script>
+${codes.js}
+</script>
+
+</body>
+</html>`;
+
+        // Create blob and download
+        const blob = new Blob([fullHTML.trim()], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${currentEffect}-particle-effect.html`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        // Visual feedback
+        downloadButton.textContent = 'Downloaded!';
+        downloadButton.classList.add('downloaded');
+        setTimeout(() => {
+            downloadButton.textContent = 'Download Code';
+            downloadButton.classList.remove('downloaded');
+        }, 2000);
+    });
 
     // Initial load
     ParticleManager.init('floating');
