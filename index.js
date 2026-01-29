@@ -319,7 +319,7 @@ ${codes.js}
     // New Particle Effects
     const networkRepulse = {
         init() {
-            for (let i = 0; i < 120; i++) {
+            for (let i = 0; i < 60; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
@@ -829,7 +829,7 @@ canvas.height = window.innerHeight;
 let particles = [];
 let mouse = { x: 0, y: 0 };
 
-for (let i = 0; i < 120; i++) {
+for (let i = 0; i < 60; i++) {
   particles.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
